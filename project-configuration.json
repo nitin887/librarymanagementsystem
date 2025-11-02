@@ -1,0 +1,90 @@
+{
+  "projectName": "library-management-system",
+  "description": "A comprehensive overview of the project configuration and setup.",
+  "buildTool": "Maven",
+  "javaVersion": "25",
+  "springBootVersion": "3.5.6",
+  "dependencies": [
+    {
+      "groupId": "org.springframework.boot",
+      "artifactId": "spring-boot-starter-web"
+    },
+    {
+      "groupId": "org.springframework.boot",
+      "artifactId": "spring-boot-starter-data-jpa"
+    },
+    {
+      "groupId": "org.springframework.boot",
+      "artifactId": "spring-boot-starter-security"
+    },
+    {
+      "groupId": "org.springframework.boot",
+      "artifactId": "spring-boot-starter-oauth2-resource-server"
+    },
+    {
+      "groupId": "com.mysql",
+      "artifactId": "mysql-connector-j"
+    },
+    {
+      "groupId": "org.projectlombok",
+      "artifactId": "lombok"
+    },
+    {
+      "groupId": "org.mapstruct",
+      "artifactId": "mapstruct",
+      "version": "1.5.5.Final"
+    },
+    {
+      "groupId": "com.h2database",
+      "artifactId": "h2",
+      "scope": "test"
+    }
+  ],
+  "security": {
+    "authentication": "OAuth2 with Keycloak",
+    "configuration": {
+      "issuerUri": "http://localhost:8080/realms/your-realm",
+      "clientId": "library-management-system",
+      "clientSecret": "eORYxHVioZiDjTM5lPGP1kUtqiC4gqGQ"
+    },
+    "authorizationRules": [
+      {
+        "role": "USER",
+        "permissions": ["GET on all API endpoints"]
+      },
+      {
+        "role": "LIBRARIAN",
+        "permissions": ["GET, POST, PUT, DELETE on all API endpoints"]
+      },
+      {
+        "role": "ADMIN",
+        "permissions": ["Full access to all API endpoints"]
+      }
+    ]
+  },
+  "testing": {
+    "framework": "JUnit 5 with Mockito",
+    "database": "H2 (In-Memory)",
+    "strategy": "Unit tests for repository, service, and controller layers for each entity.",
+    "testFiles": [
+      "BookRepositoryTest.java",
+      "BookServiceTest.java",
+      "BookControllerTest.java",
+      "AuthorRepositoryTest.java",
+      "AuthorServiceTest.java",
+      "AuthorControllerTest.java",
+      "PatronRepositoryTest.java",
+      "PatronServiceTest.java",
+      "PatronControllerTest.java",
+      "BorrowingRecordRepositoryTest.java",
+      "BorrowingRecordServiceTest.java",
+      "BorrowingRecordControllerTest.java"
+    ]
+  },
+  "entities": [
+    "Book",
+    "Author",
+    "Patron",
+    "BorrowingRecord"
+  ]
+}
